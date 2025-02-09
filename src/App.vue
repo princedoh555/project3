@@ -18,6 +18,7 @@ const greeting = computed(() => {
   myArray.value.push({
     content: input_content.value,
     category: input_category.value,
+    done: false,
 })
 
   input_content.value = ''
@@ -59,8 +60,20 @@ const greeting = computed(() => {
       </div>
         <input type="submit" value="Add To Do" />
      
-    </form>
-      
+    </form>      
+ </section>
+
+  <section class="todo-list">
+    <div v-for="y in myArray" :class="'todo-item ${y.done ?  }'" :key="y">
+      <label>
+        <input type="checkbox" v-model="y.done"/>
+        <span :class="'bubble ${y.category}'"></span>
+      </label>
+      <div class="todo-content">
+        <input type="text" v-model="y.content"/>
+      </div>
+    </div>
+
     </section>
 </main>
 
